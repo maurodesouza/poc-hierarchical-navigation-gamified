@@ -76,11 +76,18 @@ h2 {
 h1 {
   font-size: 56px;
   letter-spacing: -1.68px;
-  margin: 32px 0;
+  margin: 32px 0 8px;
   @media (max-width: 1024px) {
     font-size: 36px;
-    margin: 20px 0;
+    margin: 20px 0 4px;
   }
+}
+
+.app-subtitle {
+  font-size: 16px;
+  color: var(--text);
+  margin: 0 0 24px;
+  font-weight: 400;
 }
 h2 {
   font-size: 24px;

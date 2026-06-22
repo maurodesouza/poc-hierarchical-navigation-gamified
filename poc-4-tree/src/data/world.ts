@@ -1,5 +1,9 @@
-// Canonical dataset — source of truth copied verbatim into POCs 2–4.
-// Do NOT modify this file without updating all other POCs.
+/**
+ * Canonical dataset and types for POC 1 — Visual Navigation with HTML + Interactive SVG
+ *
+ * This file is the source of truth and must be copied verbatim into POCs 2–4.
+ * All POCs must use identical data structures and content.
+ */
 
 export interface ObjectInfo {
   id: string;
@@ -16,29 +20,38 @@ export interface AreaNode {
   objects?: ObjectInfo[];
 }
 
+/**
+ * World → House → Kitchen → [Refrigerator]
+ *
+ * This is the canonical hierarchical navigation structure.
+ * All POCs must replicate this exact data structure.
+ */
 export const world: AreaNode = {
-  id: 'world',
-  name: 'World',
+  id: "world",
+  name: "World",
   children: [
     {
-      id: 'house',
-      name: 'House',
+      id: "house",
+      name: "House",
       children: [
         {
-          id: 'kitchen',
-          name: 'Kitchen',
+          id: "kitchen",
+          name: "Kitchen",
           objects: [
             {
-              id: 'refrigerator',
-              name: 'Refrigerator',
-              translations: { en: 'Refrigerator', pt: 'Geladeira', ja: '冷蔵庫' },
-              description:
-                'A large kitchen appliance used to keep food and beverages cold and fresh.',
-              actions: ['Open', 'Close', 'Clean'],
-            },
-          ],
-        },
-      ],
-    },
-  ],
+              id: "refrigerator",
+              name: "Refrigerator",
+              translations: {
+                en: "Refrigerator",
+                pt: "Geladeira",
+                ja: "冷蔵庫"
+              },
+              description: "A kitchen appliance used for food storage and preservation.",
+              actions: ["Open", "Close", "Clean"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
 };
