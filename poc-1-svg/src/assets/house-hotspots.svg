@@ -1,0 +1,40 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- This file contains invisible hotspots for the house scene -->
+  <!-- Hotspots are positioned over interactive areas like the kitchen -->
+  
+  <defs>
+    <style>
+      .hotspot {
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .hotspot:hover {
+        filter: drop-shadow(0 0 8px rgba(66, 153, 225, 0.8));
+      }
+      .hotspot-rect {
+        fill: transparent;
+        stroke: transparent;
+        stroke-width: 2;
+        transition: all 0.3s ease;
+      }
+      .hotspot:hover .hotspot-rect {
+        stroke: #4299e1;
+        stroke-opacity: 0.8;
+        fill: rgba(66, 153, 225, 0.1);
+      }
+    </style>
+  </defs>
+
+  <!-- Kitchen hotspot (main interactive area) -->
+  <!-- Positioned approximately over the kitchen in the house illustration -->
+  <g class="hotspot" data-area-id="kitchen">
+    <rect 
+      x="480" 
+      y="320" 
+      width="140" 
+      height="120" 
+      class="hotspot-rect"
+      rx="4"
+    />
+  </g>
+</svg>

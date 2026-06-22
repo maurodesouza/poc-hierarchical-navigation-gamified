@@ -1,6 +1,10 @@
 import type { AreaNode, ObjectInfo } from '../data/world';
 import { AreaSvg } from './AreaSvg';
-import { ObjectHotspot } from './ObjectHotspot';
+
+// Asset imports for hotspots
+import worldHotspots from '../assets/world-hotspots.svg?raw';
+import houseHotspots from '../assets/house-hotspots.svg?raw';
+import kitchenHotspots from '../assets/kitchen-hotspots.svg?raw';
 
 interface SceneProps {
   area: AreaNode;
@@ -8,37 +12,75 @@ interface SceneProps {
   onObjectSelect: (object: ObjectInfo) => void;
 }
 
+// Asset mapping for hotspots
+const hotspotAssets: Record<string, string> = {
+  world: worldHotspots,
+  house: houseHotspots,
+  kitchen: kitchenHotspots
+};
+
 export function Scene({ area, onAreaClick, onObjectSelect }: SceneProps) {
+  const hotspotsContent = hotspotAssets[area.id];
+
+  // Handle hotspot clicks for both areas and objects
+  const handleHotspotClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    const hotspotGroup = target.closest('.hotspot');
+    if (hotspotGroup) {
+      const areaId = hotspotGroup.getAttribute('data-area-id');
+      const objectId = hotspotGroup.getAttribute('data-object-id');
+      
+      if (areaId) {
+        onAreaClick(areaId);
+      } else if (objectId && area.objects) {
+        const object = area.objects.find(obj => obj.id === objectId);
+        if (object) {
+          onObjectSelect(object);
+        }
+      }
+    }
+  };
+
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+    <div 
+      key={area.id}
+      style={{ 
+        position: 'relative', 
+        width: '100%', 
+        height: '100%',
+        animation: 'fadeInScale 0.3s ease-out'
+      }}
+    >
+      <style>
+        {`
+          @keyframes fadeInScale {
+            from {
+              opacity: 0.5;
+              transform: scale(0.95);
+            }
+            to {
+              opacity: 1;
+              transform: scale(1);
+            }
+          }
+        `}
+      </style>
       <AreaSvg area={area} onAreaClick={onAreaClick} />
       
-      {area.objects && area.objects.length > 0 && (
-        <svg
-          width="800"
-          height="600"
-          viewBox="0 0 800 600"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            pointerEvents: 'none'
+      {/* Object hotspots overlay for areas with objects */}
+      {hotspotsContent && area.objects && area.objects.length > 0 && (
+        <div 
+          dangerouslySetInnerHTML={{ __html: hotspotsContent }}
+          style={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            width: '100%', 
+            height: '100%',
+            pointerEvents: 'auto'
           }}
-        >
-          <g style={{ pointerEvents: 'auto' }}>
-            {area.objects.map((object) => (
-              <ObjectHotspot
-                key={object.id}
-                object={object}
-                x={550}
-                y={350}
-                width={120}
-                height={180}
-                onSelect={onObjectSelect}
-              />
-            ))}
-          </g>
-        </svg>
+          onClick={handleHotspotClick}
+        />
       )}
     </div>
   );
