@@ -1,0 +1,40 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- This file contains invisible hotspots for the world scene -->
+  <!-- Hotspots are positioned over interactive areas like the house -->
+  
+  <defs>
+    <style>
+      .hotspot {
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .hotspot:hover {
+        filter: drop-shadow(0 0 8px rgba(66, 153, 225, 0.8));
+      }
+      .hotspot-rect {
+        fill: transparent;
+        stroke: transparent;
+        stroke-width: 2;
+        transition: all 0.3s ease;
+      }
+      .hotspot:hover .hotspot-rect {
+        stroke: #4299e1;
+        stroke-opacity: 0.8;
+        fill: rgba(66, 153, 225, 0.1);
+      }
+    </style>
+  </defs>
+
+  <!-- House hotspot (main interactive area) -->
+  <!-- Positioned approximately over the house in the world illustration -->
+  <g class="hotspot" data-area-id="house">
+    <rect 
+      x="320" 
+      y="300" 
+      width="160" 
+      height="140" 
+      class="hotspot-rect"
+      rx="4"
+    />
+  </g>
+</svg>
