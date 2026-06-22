@@ -5,218 +5,81 @@ interface AreaSvgProps {
   onAreaClick: (areaId: string) => void;
 }
 
+// Asset imports for each area
+import worldIllustration from '../assets/world.svg?raw';
+import worldHotspots from '../assets/world-hotspots.svg?raw';
+import houseIllustration from '../assets/house.svg?raw';
+import houseHotspots from '../assets/house-hotspots.svg?raw';
+import kitchenIllustration from '../assets/kitchen.svg?raw';
+import kitchenHotspots from '../assets/kitchen-hotspots.svg?raw';
+
+// Asset mapping for each area
+const areaAssets: Record<string, { illustration: string; hotspots: string }> = {
+  world: {
+    illustration: worldIllustration,
+    hotspots: worldHotspots
+  },
+  house: {
+    illustration: houseIllustration,
+    hotspots: houseHotspots
+  },
+  kitchen: {
+    illustration: kitchenIllustration,
+    hotspots: kitchenHotspots
+  }
+};
+
 export function AreaSvg({ area, onAreaClick }: AreaSvgProps) {
-  if (area.id === 'world') {
-    return (
-      <svg width="800" height="600" viewBox="0 0 800 600">
-        <rect width="800" height="600" fill="#87CEEB" />
-        <text x="400" y="50" textAnchor="middle" fontSize="24" fontWeight="bold" fill="#333">
-          {area.name}
-        </text>
-        {area.children?.map((child) => (
-          <g
-            key={child.id}
-            onClick={() => onAreaClick(child.id)}
-            style={{ cursor: 'pointer' }}
-          >
-            <rect
-              x="300"
-              y="200"
-              width="200"
-              height="150"
-              fill="#8B4513"
-              stroke="#5D3A1A"
-              strokeWidth="3"
-              rx="5"
-            />
-            <rect
-              x="380"
-              y="280"
-              width="40"
-              height="70"
-              fill="#654321"
-              stroke="#3D2914"
-              strokeWidth="2"
-            />
-            <rect
-              x="320"
-              y="230"
-              width="50"
-              height="50"
-              fill="#87CEEB"
-              stroke="#5D3A1A"
-              strokeWidth="2"
-            />
-            <rect
-              x="430"
-              y="230"
-              width="50"
-              height="50"
-              fill="#87CEEB"
-              stroke="#5D3A1A"
-              strokeWidth="2"
-            />
-            <text
-              x="400"
-              y="190"
-              textAnchor="middle"
-              fontSize="18"
-              fontWeight="bold"
-              fill="#333"
-              pointerEvents="none"
-            >
-              {child.name}
-            </text>
-          </g>
-        ))}
-      </svg>
-    );
-  }
+  const assets = areaAssets[area.id];
 
-  if (area.id === 'house') {
-    return (
-      <svg width="800" height="600" viewBox="0 0 800 600">
-        <rect width="800" height="600" fill="#F5F5DC" />
-        <text x="400" y="50" textAnchor="middle" fontSize="24" fontWeight="bold" fill="#333">
-          {area.name}
-        </text>
-        {area.children?.map((child) => (
-          <g
-            key={child.id}
-            onClick={() => onAreaClick(child.id)}
-            style={{ cursor: 'pointer' }}
-          >
-            <rect
-              x="250"
-              y="150"
-              width="300"
-              height="250"
-              fill="#E8E8E8"
-              stroke="#999"
-              strokeWidth="3"
-              rx="5"
-            />
-            <rect
-              x="350"
-              y="300"
-              width="100"
-              height="100"
-              fill="#8B4513"
-              stroke="#5D3A1A"
-              strokeWidth="2"
-            />
-            <rect
-              x="280"
-              y="180"
-              width="80"
-              height="100"
-              fill="#87CEEB"
-              stroke="#666"
-              strokeWidth="2"
-            />
-            <rect
-              x="440"
-              y="180"
-              width="80"
-              height="100"
-              fill="#87CEEB"
-              stroke="#666"
-              strokeWidth="2"
-            />
-            <text
-              x="400"
-              y="130"
-              textAnchor="middle"
-              fontSize="18"
-              fontWeight="bold"
-              fill="#333"
-              pointerEvents="none"
-            >
-              {child.name}
-            </text>
-          </g>
-        ))}
-      </svg>
-    );
-  }
+  // Handle hotspot clicks
+  const handleHotspotClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    const hotspotGroup = target.closest('.hotspot');
+    if (hotspotGroup) {
+      const areaId = hotspotGroup.getAttribute('data-area-id');
+      if (areaId) {
+        onAreaClick(areaId);
+      }
+    }
+  };
 
-  if (area.id === 'kitchen') {
+  if (!assets) {
     return (
-      <svg width="800" height="600" viewBox="0 0 800 600">
-        <rect width="800" height="600" fill="#FFF8DC" />
-        <text x="400" y="50" textAnchor="middle" fontSize="24" fontWeight="bold" fill="#333">
-          {area.name}
-        </text>
-        <rect
-          x="100"
-          y="100"
-          width="200"
-          height="150"
-          fill="#D2B48C"
-          stroke="#8B4513"
-          strokeWidth="2"
-          rx="5"
-        />
-        <text
-          x="200"
-          y="180"
-          textAnchor="middle"
-          fontSize="14"
-          fill="#333"
-          pointerEvents="none"
-        >
-          Counter
-        </text>
-        <rect
-          x="500"
-          y="100"
-          width="150"
-          height="200"
-          fill="#C0C0C0"
-          stroke="#808080"
-          strokeWidth="2"
-          rx="5"
-        />
-        <text
-          x="575"
-          y="210"
-          textAnchor="middle"
-          fontSize="14"
-          fill="#333"
-          pointerEvents="none"
-        >
-          Stove
-        </text>
-        <rect
-          x="100"
-          y="350"
-          width="200"
-          height="150"
-          fill="#F5F5F5"
-          stroke="#CCC"
-          strokeWidth="2"
-          rx="5"
-        />
-        <text
-          x="200"
-          y="430"
-          textAnchor="middle"
-          fontSize="14"
-          fill="#333"
-          pointerEvents="none"
-        >
-          Table
-        </text>
-      </svg>
+      <div style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        width: '800px', 
+        height: '600px',
+        backgroundColor: '#f0f0f0' 
+      }}>
+        <span>Unknown area: {area.name}</span>
+      </div>
     );
   }
 
   return (
-    <svg width="800" height="600" viewBox="0 0 800 600">
-      <rect width="800" height="600" fill="#f0f0f0" />
-      <text x="400" y="300" textAnchor="middle" fontSize="18" fill="#666">
-        Unknown area: {area.name}
-      </text>
-    </svg>
+    <div style={{ position: 'relative', width: '800px', height: '600px' }}>
+      {/* Background illustration */}
+      <div 
+        dangerouslySetInnerHTML={{ __html: assets.illustration }}
+        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+      />
+      
+      {/* Hotspot overlay */}
+      <div 
+        dangerouslySetInnerHTML={{ __html: assets.hotspots }}
+        style={{ 
+          position: 'absolute', 
+          top: 0, 
+          left: 0, 
+          width: '100%', 
+          height: '100%',
+          pointerEvents: 'auto'
+        }}
+        onClick={handleHotspotClick}
+      />
+    </div>
   );
 }
