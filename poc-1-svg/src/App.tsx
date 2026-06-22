@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigation } from './hooks/useNavigation';
-import { ObjectInfo } from './data/world';
+import type { ObjectInfo } from './data/world';
 import { Scene } from './components/Scene';
 import { BackButton } from './components/BackButton';
 import { Drawer } from './components/Drawer';

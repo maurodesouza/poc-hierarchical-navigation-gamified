@@ -1,4 +1,4 @@
-import { ObjectInfo } from '../data/world';
+import type { ObjectInfo } from '../data/world';
 
 interface DrawerProps {
   object: ObjectInfo | null;

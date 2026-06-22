@@ -1,4 +1,4 @@
-import { AreaNode } from '../data/world';
+import type { AreaNode } from '../data/world';
 
 interface AreaSvgProps {
   area: AreaNode;

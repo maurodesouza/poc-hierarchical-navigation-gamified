@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
-import { AreaNode, world } from '../data/world';
+import type { AreaNode } from '../data/world';
+import { world } from '../data/world';
 
 /**
  * Navigation hook for hierarchical area exploration

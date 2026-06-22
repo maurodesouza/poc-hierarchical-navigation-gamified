@@ -1,4 +1,4 @@
-import { AreaNode, ObjectInfo } from '../data/world';
+import type { AreaNode, ObjectInfo } from '../data/world';
 import { AreaSvg } from './AreaSvg';
 import { ObjectHotspot } from './ObjectHotspot';
 
