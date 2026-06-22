@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import Phaser from 'phaser';
-import { ExplorationScene } from './ExplorationScene';
+import { WorldScene } from './scenes/WorldScene';
+import { HouseScene } from './scenes/HouseScene';
+import { KitchenScene } from './scenes/KitchenScene';
 
 export const PhaserGame = () => {
   const gameRef = useRef<Phaser.Game | null>(null);
@@ -15,7 +17,11 @@ export const PhaserGame = () => {
       height: 600,
       parent: containerRef.current,
       backgroundColor: '#2c3e50',
-      scene: [ExplorationScene],
+      scene: [WorldScene, HouseScene, KitchenScene],
+      scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+      },
     };
 
     const game = new Phaser.Game(config);
@@ -29,5 +35,5 @@ export const PhaserGame = () => {
     };
   }, []);
 
-  return <div ref={containerRef} style={{ width: '800px', height: '600px' }} />;
+  return <div ref={containerRef} style={{ width: '100%', maxWidth: '800px', aspectRatio: '4/3' }} />;
 };
