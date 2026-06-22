@@ -13,6 +13,15 @@ export function ObjectHotspot({ object, x, y, width, height, onSelect }: ObjectH
   return (
     <g
       onClick={() => onSelect(object)}
+      role="button"
+      tabIndex={0}
+      aria-label={`View details for ${object.name}`}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onSelect(object);
+        }
+      }}
       style={{ cursor: 'pointer' }}
     >
       <rect

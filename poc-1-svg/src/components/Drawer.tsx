@@ -12,6 +12,8 @@ export function Drawer({ object, onClose }: DrawerProps) {
 
   return (
     <div
+      role="dialog"
+      aria-label="Object details"
       style={{
         position: 'fixed',
         right: 0,
@@ -28,6 +30,7 @@ export function Drawer({ object, onClose }: DrawerProps) {
     >
       <button
         onClick={onClose}
+        aria-label="Close object details"
         style={{
           position: 'absolute',
           top: '10px',

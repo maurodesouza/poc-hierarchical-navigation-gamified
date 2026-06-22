@@ -17,6 +17,10 @@ export function useNavigation() {
       if (nextArea) {
         return [...currentPath, nextArea];
       }
+      
+      if (import.meta.env.DEV) {
+        console.warn(`Area with id "${areaId}" not found in current area "${currentArea.id}"`);
+      }
       return currentPath;
     });
   }, []);

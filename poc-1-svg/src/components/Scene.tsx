@@ -13,7 +13,7 @@ export function Scene({ area, onAreaClick, onObjectSelect }: SceneProps) {
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
       <AreaSvg area={area} onAreaClick={onAreaClick} />
       
-      {area.id === 'kitchen' && area.objects && (
+      {area.objects && area.objects.length > 0 && (
         <svg
           width="800"
           height="600"
@@ -30,10 +30,10 @@ export function Scene({ area, onAreaClick, onObjectSelect }: SceneProps) {
               <ObjectHotspot
                 key={object.id}
                 object={object}
-                x="550"
-                y="350"
-                width="120"
-                height="180"
+                x={550}
+                y={350}
+                width={120}
+                height={180}
                 onSelect={onObjectSelect}
               />
             ))}

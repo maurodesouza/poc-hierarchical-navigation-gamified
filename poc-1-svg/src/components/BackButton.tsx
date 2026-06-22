@@ -8,6 +8,7 @@ export function BackButton({ onClick, disabled = false }: BackButtonProps) {
     <button
       onClick={onClick}
       disabled={disabled}
+      aria-label="Go back to previous area"
       style={{
         padding: '8px 16px',
         backgroundColor: disabled ? '#ccc' : '#007bff',
