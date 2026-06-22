@@ -1,0 +1,38 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Kitchen background -->
+  <rect width="800" height="600" fill="#FFF8DC"/>
+  
+  <!-- Floor -->
+  <rect x="50" y="350" width="700" height="200" fill="#FFE4B5" stroke="#DEB887" stroke-width="2"/>
+  
+  <!-- Counter -->
+  <rect x="100" y="100" width="200" height="150" fill="#D2B48C" stroke="#8B4513" stroke-width="2" rx="5"/>
+  
+  <!-- Stove -->
+  <rect x="500" y="100" width="150" height="200" fill="#C0C0C0" stroke="#808080" stroke-width="2" rx="5"/>
+  
+  <!-- Table -->
+  <rect x="100" y="350" width="200" height="150" fill="#F5F5F5" stroke="#CCC" stroke-width="2" rx="5"/>
+  
+  <!-- Refrigerator - interactive object -->
+  <g id="refrigerator" transform="translate(500, 350)">
+    <!-- Main body -->
+    <rect x="0" y="0" width="120" height="180" fill="#E8E8E8" stroke="#A9A9A9" stroke-width="3" rx="5"/>
+    
+    <!-- Freezer section -->
+    <rect x="5" y="5" width="110" height="70" fill="#F0F0F0" stroke="#A9A9A9" stroke-width="2" rx="3"/>
+    
+    <!-- Fridge section -->
+    <rect x="5" y="80" width="110" height="95" fill="#F0F0F0" stroke="#A9A9A9" stroke-width="2" rx="3"/>
+    
+    <!-- Handles -->
+    <rect x="100" y="30" width="10" height="20" fill="#A9A9A9" stroke="#808080" stroke-width="1" rx="2"/>
+    <rect x="100" y="120" width="10" height="25" fill="#A9A9A9" stroke="#808080" stroke-width="1" rx="2"/>
+    
+    <!-- Brand label -->
+    <text x="60" y="40" text-anchor="middle" font-size="10" fill="#666" font-weight="bold">COLD</text>
+  </g>
+  
+  <!-- Clickable hotspot for refrigerator -->
+  <rect id="refrigerator-hotspot" x="500" y="350" width="120" height="180" fill="transparent" stroke="transparent" stroke-width="0"/>
+</svg>
