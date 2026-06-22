@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Application } from 'pixi.js';
+import { clearTextureCache } from '../assets/textureGenerator';
 
 interface PixiStageProps {
   children: (app: Application) => void;
@@ -7,7 +8,7 @@ interface PixiStageProps {
 
 /**
  * React wrapper that mounts a Pixi Application and provides it to children.
- * Properly cleans up the Pixi Application on unmount to prevent memory leaks.
+ * Properly cleans up the Pixi Application and textures on unmount to prevent memory leaks.
  */
 export function PixiStage({ children }: PixiStageProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -35,12 +36,16 @@ export function PixiStage({ children }: PixiStageProps) {
     initPixi();
 
     return () => {
+      // Clear texture cache before destroying app
+      clearTextureCache();
+      
       if (appRef.current) {
         appRef.current.destroy(true, true);
         appRef.current = null;
       }
     };
-  }, [children]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return <canvas ref={canvasRef} />;
 }
