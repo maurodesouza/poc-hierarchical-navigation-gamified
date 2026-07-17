@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Application } from 'pixi.js';
-import { clearTextureCache } from '../assets/textureGenerator';
+import { clearTextureCache, getPaletteColor } from '../assets/textureGenerator';
 
 interface PixiStageProps {
   children: (app: Application) => void;
@@ -25,7 +25,7 @@ export function PixiStage({ children }: PixiStageProps) {
       await app.init({
         canvas: canvasRef.current,
         resizeTo: window,
-        backgroundColor: 0x1a1a2e,
+        backgroundColor: getPaletteColor('cream'),
         antialias: true,
       });
 
