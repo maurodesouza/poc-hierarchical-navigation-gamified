@@ -82,7 +82,7 @@ export function Scene({
 
   return (
     <div style={{ width: '100%', height: '100vh' }}>
-      <Canvas>
+      <Canvas shadows gl={{ antialias: true }}>
         <Suspense fallback={null}>
           <OrthographicCamera
             makeDefault
