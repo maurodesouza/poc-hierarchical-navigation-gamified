@@ -20,12 +20,12 @@ export class KitchenScene extends Phaser.Scene {
     bg.setInteractive();
 
     // Add refrigerator as interactive object
-    this.refrigeratorSprite = this.add.image(560, 440, 'refrigerator');
+    this.refrigeratorSprite = this.add.image(535, 338, 'refrigerator');
     this.refrigeratorSprite.setInteractive({ useHandCursor: true });
     
     // Add hover effect for refrigerator
     this.refrigeratorSprite.on('pointerover', () => {
-      this.refrigeratorSprite.setTint(0xcccccc);
+      this.refrigeratorSprite.setTint(0xffc24d);
     });
     this.refrigeratorSprite.on('pointerout', () => {
       this.refrigeratorSprite.clearTint();
