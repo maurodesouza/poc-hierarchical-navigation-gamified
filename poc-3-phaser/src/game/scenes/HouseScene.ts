@@ -17,14 +17,14 @@ export class HouseScene extends Phaser.Scene {
     bg.setInteractive();
 
     // Add clickable kitchen area
-    const kitchenArea = this.add.zone(400, 275, 300, 250);
+    const kitchenArea = this.add.zone(520, 320, 185, 245);
     kitchenArea.setInteractive({ useHandCursor: true });
     kitchenArea.on('pointerdown', () => {
       this.navigateToKitchen();
     });
 
     // Add hover indicator
-    this.hoverIndicator = this.add.rectangle(400, 275, 300, 250, 0x4a90e2, 0.3);
+    this.hoverIndicator = this.add.rectangle(520, 320, 185, 245, 0xffc24d, 0.3);
     this.hoverIndicator.setVisible(false);
 
     // Add hover effect

@@ -17,14 +17,14 @@ export class WorldScene extends Phaser.Scene {
     bg.setInteractive();
 
     // Add clickable house area
-    const houseArea = this.add.zone(400, 275, 200, 150);
+    const houseArea = this.add.zone(400, 370, 230, 190);
     houseArea.setInteractive({ useHandCursor: true });
     houseArea.on('pointerdown', () => {
       this.navigateToHouse();
     });
 
     // Add hover indicator
-    this.hoverIndicator = this.add.rectangle(400, 275, 200, 150, 0x4a90e2, 0.3);
+    this.hoverIndicator = this.add.rectangle(400, 370, 230, 190, 0xffc24d, 0.3);
     this.hoverIndicator.setVisible(false);
 
     // Add hover effect

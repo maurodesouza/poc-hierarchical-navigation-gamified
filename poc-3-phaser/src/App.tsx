@@ -9,8 +9,8 @@ function App() {
   const [selectedObject, setSelectedObject] = useState<ObjectInfo | null>(null);
 
   useEffect(() => {
-    const handleObjectSelected = (object: ObjectInfo) => {
-      setSelectedObject(object);
+    const handleObjectSelected = (object: unknown) => {
+      setSelectedObject(object as ObjectInfo);
     };
 
     eventBus.on('select-object', handleObjectSelected);

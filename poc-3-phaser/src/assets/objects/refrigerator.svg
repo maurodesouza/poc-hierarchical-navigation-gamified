@@ -1,20 +1,12 @@
-<svg width="120" height="180" viewBox="0 0 120 180" xmlns="http://www.w3.org/2000/svg">
-  <!-- Main body -->
-  <rect x="0" y="0" width="120" height="180" fill="#E8E8E8" stroke="#A9A9A9" stroke-width="3" rx="5"/>
-  
-  <!-- Freezer section -->
-  <rect x="5" y="5" width="110" height="70" fill="#F0F0F0" stroke="#A9A9A9" stroke-width="2" rx="3"/>
-  
-  <!-- Fridge section -->
-  <rect x="5" y="80" width="110" height="95" fill="#F0F0F0" stroke="#A9A9A9" stroke-width="2" rx="3"/>
-  
-  <!-- Handles -->
-  <rect x="100" y="30" width="10" height="20" fill="#A9A9A9" stroke="#808080" stroke-width="1" rx="2"/>
-  <rect x="100" y="120" width="10" height="25" fill="#A9A9A9" stroke="#808080" stroke-width="1" rx="2"/>
-  
-  <!-- Brand label -->
-  <text x="60" y="40" text-anchor="middle" font-size="10" fill="#666" font-weight="bold">COLD</text>
-  
-  <!-- Hover effect indicator -->
-  <rect x="0" y="0" width="120" height="180" fill="transparent" stroke="#4a90e2" stroke-width="0" rx="5" class="hover-border"/>
+<svg width="180" height="240" viewBox="0 0 180 240" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="92" cy="214" rx="78" ry="18" fill="#5B4A54" opacity=".18"/>
+  <g transform="translate(90 118)">
+    <polygon points="-62,-96 0,-127 62,-96 0,-65" fill="#C4E8E4" stroke="#C4E8E4" stroke-width="12" stroke-linejoin="round"/>
+    <polygon points="0,94 62,63 62,-96 0,-65" fill="#8FC4AF" stroke="#8FC4AF" stroke-width="12" stroke-linejoin="round"/>
+    <polygon points="-62,63 0,94 0,-65 -62,-96" fill="#BFE6D8" stroke="#BFE6D8" stroke-width="12" stroke-linejoin="round"/>
+    <polyline points="-65,-36 0,-4 65,-36" fill="none" stroke="#FFF3E2" stroke-width="6" stroke-linecap="round"/>
+    <rect x="-18" y="-72" width="13" height="38" rx="6.5" fill="#948B7F"/><rect x="-21" y="-75" width="13" height="38" rx="6.5" fill="#C9C2B8"/>
+    <rect x="-18" y="8" width="13" height="72" rx="6.5" fill="#948B7F"/><rect x="-21" y="5" width="13" height="72" rx="6.5" fill="#C9C2B8"/>
+    <circle cx="-42" cy="-17" r="5" fill="#FFD98C"/>
+  </g>
 </svg>
