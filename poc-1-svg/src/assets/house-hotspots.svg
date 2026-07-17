@@ -9,7 +9,7 @@
         transition: all 0.3s ease;
       }
       .hotspot:hover {
-        filter: drop-shadow(0 0 8px rgba(66, 153, 225, 0.8));
+        filter: drop-shadow(0 0 8px rgba(255, 194, 77, 0.8));
       }
       .hotspot-rect {
         fill: transparent;
@@ -18,21 +18,21 @@
         transition: all 0.3s ease;
       }
       .hotspot:hover .hotspot-rect {
-        stroke: #4299e1;
+        stroke: #FFC24D;
         stroke-opacity: 0.8;
-        fill: rgba(66, 153, 225, 0.1);
+        fill: rgba(255, 194, 77, 0.12);
       }
     </style>
   </defs>
 
   <!-- Kitchen hotspot (main interactive area) -->
-  <!-- Positioned approximately over the kitchen in the house illustration -->
+  <!-- Positioned over the kitchen doorway and preview area in the house illustration -->
   <g class="hotspot" data-area-id="kitchen">
     <rect 
-      x="480" 
-      y="320" 
-      width="140" 
-      height="120" 
+      x="412" 
+      y="228" 
+      width="194" 
+      height="208" 
       class="hotspot-rect"
       rx="4"
     />

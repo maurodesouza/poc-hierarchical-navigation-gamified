@@ -9,7 +9,7 @@
         transition: all 0.3s ease;
       }
       .hotspot:hover {
-        filter: drop-shadow(0 0 8px rgba(66, 153, 225, 0.8));
+        filter: drop-shadow(0 0 8px rgba(255, 194, 77, 0.8));
       }
       .hotspot-rect {
         fill: transparent;
@@ -18,15 +18,15 @@
         transition: all 0.3s ease;
       }
       .hotspot:hover .hotspot-rect {
-        stroke: #4299e1;
+        stroke: #FFC24D;
         stroke-opacity: 0.8;
-        fill: rgba(66, 153, 225, 0.1);
+        fill: rgba(255, 194, 77, 0.12);
       }
       .hotspot-indicator {
         transition: all 0.3s ease;
       }
       .hotspot:hover .hotspot-indicator {
-        fill: rgba(66, 153, 225, 0.3);
+        fill: rgba(255, 194, 77, 0.3);
         stroke-opacity: 1;
         r: 10;
       }
@@ -34,23 +34,23 @@
   </defs>
 
   <!-- Refrigerator hotspot (main interactive object) -->
-  <!-- Positioned approximately over the fridge in the kitchen illustration -->
+  <!-- Positioned over the redrawn mint fridge in the kitchen illustration -->
   <g class="hotspot" data-object-id="refrigerator">
     <rect 
-      x="460" 
-      y="280" 
-      width="120" 
-      height="180" 
+      x="454" 
+      y="198" 
+      width="132" 
+      height="238" 
       class="hotspot-rect"
       rx="4"
     />
     <!-- Add a subtle indicator that this is an object hotspot -->
     <circle 
       cx="520" 
-      cy="370" 
+      cy="320" 
       r="8" 
       fill="transparent" 
-      stroke="#4299e1" 
+      stroke="#FFC24D" 
       stroke-width="2" 
       opacity="0.5"
       class="hotspot-indicator"
