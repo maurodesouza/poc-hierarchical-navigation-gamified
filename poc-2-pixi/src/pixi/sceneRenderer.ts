@@ -7,6 +7,7 @@ import {
   getRefrigeratorTexture,
   getHouseInteriorTexture,
   getKitchenInteriorTexture,
+  getPaletteColor,
   clearTextureCache
 } from '../assets/textureGenerator';
 
@@ -120,7 +121,7 @@ export function renderScene(
   const titleText = new Text({
     text: area.name,
     style: {
-      fill: 0xffffff,
+      fill: getPaletteColor('ink'),
       fontSize: 32,
       fontWeight: 'bold',
     },
