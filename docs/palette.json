@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "name": "Interactive Educational Toy — Canonical Palette",
+    "spec": "docs/art-direction.md",
+    "version": 1,
+    "notes": "Single source of truth for all visual POCs. SVG/CSS/Three.js consume the hex strings directly; Pixi/Phaser convert to hex ints (e.g. parseInt(hex.slice(1), 16))."
+  },
+  "colors": {
+    "cream": "#FFF3E2",
+    "butter": "#FFD98C",
+    "peach": "#FFB37E",
+    "coral": "#FF8A5C",
+    "terracotta": "#D96A45",
+    "blushPink": "#F7A8A0",
+    "grassLight": "#A5D96E",
+    "grassDark": "#75B04E",
+    "leaf": "#58A45C",
+    "leafDark": "#3E7F49",
+    "woodHoney": "#D19A62",
+    "woodMid": "#B07A48",
+    "woodDark": "#82552F",
+    "skyDay": "#AEDCEC",
+    "glass": "#C4E8E4",
+    "mintAppliance": "#BFE6D8",
+    "mintApplianceDark": "#8FC4AF",
+    "steelWarm": "#C9C2B8",
+    "steelWarmDark": "#948B7F",
+    "tileWarm": "#F4DFB8",
+    "wallInterior": "#F9E6C8",
+    "wallInteriorShade": "#EACDA3",
+    "ink": "#5B4A54"
+  },
+  "interaction": {
+    "hoverGlow": "#FFC24D",
+    "selection": "#FF7E4F",
+    "shadowTint": "#5B4A54",
+    "shadowTintAlpha": 0.18
+  },
+  "faceShading": {
+    "description": "Lightness multipliers for isometric volume faces, key light from upper-left. top = base lightened, left = base as-is, right = base darkened.",
+    "top": 1.12,
+    "left": 1.0,
+    "right": 0.82
+  }
+}
