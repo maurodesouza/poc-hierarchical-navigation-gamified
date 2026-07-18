@@ -1,5 +1,6 @@
 import { matte } from '../theme/materials';
 import { useInteractiveObject } from '../hooks/useInteractiveObject';
+import { CoffeeTable, Counter, Refrigerator, Rug, Sofa, Wall, Window } from './props';
 import { Lighting } from './Lighting';
 import { Background } from './Background';
 
@@ -20,66 +21,35 @@ export function HouseScene({ onEnterKitchen }: HouseSceneProps) {
         <meshStandardMaterial {...matte({ color: 'woodHoney' })} />
       </mesh>
 
-      <mesh position={[0, 2, -5]} castShadow receiveShadow>
-        <boxGeometry args={[10, 4, 0.2]} />
-        <meshStandardMaterial {...matte({ color: 'wallInterior' })} />
-      </mesh>
-      <mesh position={[-5, 2, 0]} rotation={[0, Math.PI / 2, 0]} castShadow receiveShadow>
-        <boxGeometry args={[10, 4, 0.2]} />
-        <meshStandardMaterial {...matte({ color: 'wallInterior' })} />
-      </mesh>
-      <mesh position={[5, 2, 0]} rotation={[0, Math.PI / 2, 0]} castShadow receiveShadow>
-        <boxGeometry args={[10, 4, 0.2]} />
-        <meshStandardMaterial {...matte({ color: 'wallInterior' })} />
-      </mesh>
+      <Wall position={[0, 2, -5]} width={10} height={4} />
+      <Wall position={[-5, 2, 0]} width={10} height={4} rotation={[0, Math.PI / 2, 0]} />
+      <Wall position={[5, 2, 0]} width={10} height={4} rotation={[0, Math.PI / 2, 0]} />
 
       <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 4, 0]} receiveShadow>
         <planeGeometry args={[10, 10]} />
         <meshStandardMaterial {...matte({ color: 'cream' })} />
       </mesh>
 
-      <group ref={groupRef} position={[0, 0, -3]} {...bind}>
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.01, 0]} receiveShadow>
-          <planeGeometry args={[3, 3]} />
-          <meshStandardMaterial {...matte({ color: 'tileWarm', hovered })} transparent opacity={0.5} />
-        </mesh>
-
-        <mesh position={[0, 0.5, -1]} castShadow receiveShadow>
-          <boxGeometry args={[2.5, 1, 0.5]} />
-          <meshStandardMaterial {...matte({ color: 'woodHoney', hovered })} />
-        </mesh>
-
-        <mesh position={[1.2, 0.6, -0.8]} castShadow receiveShadow>
-          <boxGeometry args={[0.3, 1.2, 0.3]} />
-          <meshStandardMaterial {...matte({ color: 'mintAppliance', hovered })} />
-        </mesh>
-
-        <mesh position={[0, 2, -1]} castShadow receiveShadow>
-          <boxGeometry args={[1.5, 0.4, 0.1]} />
-          <meshStandardMaterial {...matte({ color: 'cream', hovered })} />
-        </mesh>
-      </group>
+      <Window position={[0, 2, -4.9]} width={2} height={1.6} />
 
       <group position={[-3, 0, 2]}>
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.01, 0]} receiveShadow>
-          <planeGeometry args={[2.6, 2]} />
-          <meshStandardMaterial {...matte({ color: 'peach' })} />
-        </mesh>
+        <Rug position={[0, 0.01, 1.5]} width={2.6} depth={1.8} />
 
-        <mesh position={[0, 0.5, 0]} castShadow receiveShadow>
-          <boxGeometry args={[2, 1, 0.8]} />
-          <meshStandardMaterial {...matte({ color: 'peach' })} />
-        </mesh>
+        <group position={[0, 0, 1.5]}>
+          <CoffeeTable />
+        </group>
 
-        <mesh position={[0, 0.95, 0]} castShadow receiveShadow>
-          <boxGeometry args={[2.1, 0.3, 0.9]} />
-          <meshStandardMaterial {...matte({ color: 'blushPink' })} />
-        </mesh>
+        <Sofa hovered={false} />
+      </group>
 
-        <mesh position={[0, 0.35, 1]} castShadow receiveShadow>
-          <boxGeometry args={[1.2, 0.5, 0.7]} />
-          <meshStandardMaterial {...matte({ color: 'woodHoney' })} />
-        </mesh>
+      <group ref={groupRef} position={[0, 0, -4]} {...bind}>
+        <group position={[-0.6, 0, 0]}>
+          <Counter width={1.4} depth={0.6} height={0.8} withSink hovered={hovered} />
+        </group>
+
+        <group position={[0.8, 0, 0]}>
+          <Refrigerator hovered={hovered} scale={0.7} />
+        </group>
       </group>
     </>
   );
