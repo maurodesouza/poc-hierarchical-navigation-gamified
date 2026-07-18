@@ -1,0 +1,13 @@
+export { Cabinet } from './Cabinet';
+export { CoffeeTable } from './CoffeeTable';
+export { Counter } from './Counter';
+export { GroundTile } from './GroundTile';
+export { House } from './House';
+export { PathTile } from './PathTile';
+export { Refrigerator } from './Refrigerator';
+export { Rug } from './Rug';
+export { Sofa } from './Sofa';
+export { Stove } from './Stove';
+export { Tree } from './Tree';
+export { Wall } from './Wall';
+export { Window } from './Window';
