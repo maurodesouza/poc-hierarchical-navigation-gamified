@@ -16,6 +16,7 @@ const sourcesDir = join(dirname(distDir), 'sources');
 const out3d = join(distDir, '3d');
 const outSvg = join(distDir, '2d', 'svg');
 const outSprites = join(distDir, '2d', 'sprites');
+const out2dManifest = join(distDir, '2d', 'manifest.json');
 
 const sourcePaths = {
   glb: join(sourcesDir, '3d')
@@ -107,6 +108,18 @@ async function build(): Promise<void> {
   writeFileSync(
     join(outSprites, 'spritesheet.json'),
     JSON.stringify(spritesheet, null, 2)
+  );
+
+  const manifest = Object.fromEntries(
+    catalog.assets.map((asset) => [
+      asset.id,
+      { svg: asset.svg.path, sprite: asset.sprite.path }
+    ])
+  );
+
+  writeFileSync(
+    out2dManifest,
+    JSON.stringify({ version: catalog.version, assets: manifest }, null, 2)
   );
 
   if (missing.length > 0) {
