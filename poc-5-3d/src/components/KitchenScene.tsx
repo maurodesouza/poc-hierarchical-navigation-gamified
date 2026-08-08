@@ -1,6 +1,5 @@
-import { matte } from '../theme/materials';
 import { useInteractiveObject } from '../hooks/useInteractiveObject';
-import { Cabinet, Counter, Refrigerator, Stove, Wall } from './props';
+import { AssetRenderer } from './AssetRenderer';
 import { Lighting } from './Lighting';
 import { Background } from './Background';
 
@@ -9,7 +8,7 @@ interface KitchenSceneProps {
 }
 
 export function KitchenScene({ onRefrigeratorClick }: KitchenSceneProps) {
-  const { groupRef, hovered, bind } = useInteractiveObject({
+  const { groupRef, bind } = useInteractiveObject({
     onClick: onRefrigeratorClick,
     lift: 0.05,
   });
@@ -19,34 +18,40 @@ export function KitchenScene({ onRefrigeratorClick }: KitchenSceneProps) {
       <Background mood="kitchen" />
       <Lighting mood="kitchen" />
 
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
-        <planeGeometry args={[6, 6]} />
-        <meshStandardMaterial {...matte({ color: 'tileWarm' })} />
-      </mesh>
+      <AssetRenderer assetId="ground" position={[0, -0.006, 0]} scale={0.012} />
 
-      <Wall position={[0, 2, -3]} width={6} height={4} />
-      <Wall position={[-3, 2, 0]} width={6} height={4} rotation={[0, Math.PI / 2, 0]} />
-      <Wall position={[3, 2, 0]} width={6} height={4} rotation={[0, Math.PI / 2, 0]} />
-
-      <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 4, 0]} receiveShadow>
-        <planeGeometry args={[6, 6]} />
-        <meshStandardMaterial {...matte({ color: 'cream' })} />
-      </mesh>
+      <AssetRenderer
+        assetId="wall"
+        position={[0, 2, -3]}
+        scale={[30, 1.33, 0.033]}
+      />
+      <AssetRenderer
+        assetId="wall"
+        position={[-3, 2, 0]}
+        rotation={[0, Math.PI / 2, 0]}
+        scale={[30, 1.33, 0.033]}
+      />
+      <AssetRenderer
+        assetId="wall"
+        position={[3, 2, 0]}
+        rotation={[0, Math.PI / 2, 0]}
+        scale={[30, 1.33, 0.033]}
+      />
 
       <group position={[-1.9, 0, -2.2]}>
-        <Stove />
+        <AssetRenderer assetId="stove" />
       </group>
 
       <group position={[0, 0, -2.55]}>
-        <Counter width={2.2} depth={0.7} height={0.9} withSink withBacksplash />
+        <AssetRenderer assetId="counter" scale={[0.9, 0.95, 1.05]} />
       </group>
 
       <group position={[0, 2.4, -2.75]}>
-        <Cabinet width={2.2} height={0.7} depth={0.4} />
+        <AssetRenderer assetId="cabinet" />
       </group>
 
       <group ref={groupRef} position={[1.9, 0, -2.2]} {...bind}>
-        <Refrigerator hovered={hovered} />
+        <AssetRenderer assetId="refrigerator" />
       </group>
     </>
   );

@@ -4,12 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "prebuild": "mkdir -p public/3d && cp ../packages/assets/sources/3d/*.glb public/3d/",
+    "predev": "mkdir -p public/3d && cp ../packages/assets/sources/3d/*.glb public/3d/",
     "dev": "vite",
-    "build": "tsc -b ../packages/core/tsconfig.json && tsc -b && vite build",
+    "build": "tsc -b ../packages/assets/tsconfig.json ../packages/core/tsconfig.json && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@poc-hierarchical/assets": "*",
     "@poc-hierarchical/core": "*",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
