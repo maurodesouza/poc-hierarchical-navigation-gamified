@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import { eventBus } from '../eventBus';
-import { world } from '../../data/world';
+import { world } from '@poc-hierarchical/core';
 
 export class KitchenScene extends Phaser.Scene {
   private refrigeratorSprite!: Phaser.GameObjects.Image;

@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b ../packages/core/tsconfig.json && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@poc-hierarchical/core": "*",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },

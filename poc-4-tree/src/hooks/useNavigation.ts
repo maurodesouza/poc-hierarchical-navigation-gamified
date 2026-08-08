@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { world, type AreaNode, type ObjectInfo } from '../data/world';
+import { world, type AreaNode, type ObjectInfo } from '@poc-hierarchical/core';
 
 export interface NavigationState {
   path: AreaNode[];

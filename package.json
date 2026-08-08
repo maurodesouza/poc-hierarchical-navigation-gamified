@@ -1,0 +1,14 @@
+{
+  "name": "poc-hierarchical-navigation-gamified",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "poc-*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @poc-hierarchical/core && npm run build -w poc-1-svg -w poc-2-pixi -w poc-3-phaser -w poc-4-tree -w poc-5-3d",
+    "lint": "npm run lint --workspaces"
+  }
+}

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { PhaserGame } from './game/PhaserGame';
 import { Drawer } from './components/Drawer';
 import { eventBus } from './game/eventBus';
-import type { ObjectInfo } from './data/world';
+import type { ObjectInfo } from '@poc-hierarchical/core';
 import './App.css';
 
 function App() {

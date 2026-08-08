@@ -1,4 +1,4 @@
-import type { ObjectInfo } from '../data/world';
+import type { ObjectInfo } from '@poc-hierarchical/core';
 import { useState } from 'react';
 
 interface ObjectHotspotProps {

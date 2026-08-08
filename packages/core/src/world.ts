@@ -1,8 +1,6 @@
 /**
- * Canonical dataset and types for POC 1 — Visual Navigation with HTML + Interactive SVG
- *
- * This file is the source of truth and must be copied verbatim into POCs 2–4.
- * All POCs must use identical data structures and content.
+ * Canonical dataset and types for the hierarchical navigation POCs.
+ * Single source of truth consumed by every POC.
  */
 
 export interface ObjectInfo {
@@ -21,10 +19,10 @@ export interface AreaNode {
 }
 
 /**
- * World → House → Kitchen → [Refrigerator]
+ * World -> House -> Kitchen -> [Refrigerator]
  *
  * This is the canonical hierarchical navigation structure.
- * All POCs must replicate this exact data structure.
+ * All POCs replicate this exact data structure.
  */
 export const world: AreaNode = {
   id: "world",

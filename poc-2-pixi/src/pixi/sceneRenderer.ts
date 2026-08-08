@@ -1,5 +1,5 @@
 import { Application, Container, Graphics, Text, FederatedPointerEvent, Ticker } from 'pixi.js';
-import type { AreaNode, ObjectInfo } from '../data/world';
+import type { AreaNode, ObjectInfo } from '@poc-hierarchical/core';
 import {
   getWorldTexture,
   getHouseTexture,
