@@ -211,6 +211,71 @@ export const catalog: AssetCatalog = {
       hotspots: [],
       materials: [],
       scale: 1
+    },
+    {
+      id: 'ground_diamond',
+      name: 'Ground Diamond',
+      tags: ['outdoor', 'terrain', 'tile'],
+      source: { type: 'canonical' },
+      glb: { generated: false },
+      svg: { generated: false },
+      sprite: { generated: false },
+      boundingBox: { width: 1, height: 0.08, depth: 1 },
+      hotspots: [],
+      materials: [],
+      scale: 1
+    },
+    {
+      id: 'path_tile',
+      name: 'Path Tile',
+      tags: ['outdoor', 'ground', 'walkway', 'tile'],
+      source: { type: 'canonical' },
+      glb: { generated: false },
+      svg: { generated: false },
+      sprite: { generated: false },
+      boundingBox: { width: 0.8, height: 0.04, depth: 0.8 },
+      hotspots: [],
+      materials: [],
+      scale: 1
+    },
+    {
+      id: 'bush',
+      name: 'Bush',
+      tags: ['nature', 'outdoor', 'flora'],
+      source: { type: 'canonical' },
+      glb: { generated: false },
+      svg: { generated: false },
+      sprite: { generated: false },
+      boundingBox: { width: 1.2, height: 0.8, depth: 1.2 },
+      hotspots: [],
+      materials: [],
+      scale: 1
+    },
+    {
+      id: 'cloud',
+      name: 'Cloud',
+      tags: ['sky', 'outdoor', 'decoration'],
+      source: { type: 'canonical' },
+      glb: { generated: false },
+      svg: { generated: false },
+      sprite: { generated: false },
+      boundingBox: { width: 2.4, height: 1, depth: 1.2 },
+      hotspots: [],
+      materials: [],
+      scale: 1
+    },
+    {
+      id: 'sky_backdrop',
+      name: 'Sky Backdrop',
+      tags: ['sky', 'outdoor', 'backdrop'],
+      source: { type: 'canonical' },
+      glb: { generated: false },
+      svg: { generated: false },
+      sprite: { generated: false },
+      boundingBox: { width: 100, height: 50, depth: 100 },
+      hotspots: [],
+      materials: [],
+      scale: 1
     }
   ]
 };
