@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { get2dSvgPath } from '@poc-hierarchical/assets';
 
 export class WorldScene extends Phaser.Scene {
   private hoverIndicator!: Phaser.GameObjects.Rectangle;
@@ -8,7 +9,7 @@ export class WorldScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.svg('world-bg', 'src/assets/scenes/world.svg');
+    this.load.svg('world-bg', get2dSvgPath('world'));
   }
 
   create() {

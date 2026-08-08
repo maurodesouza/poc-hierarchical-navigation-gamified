@@ -1,38 +1,47 @@
+import { useEffect, useState } from 'react';
 import type { AreaNode } from '@poc-hierarchical/core';
+import { get2dSvgPath } from '@poc-hierarchical/assets';
+
+// Hotspot overlays are still per-POC because interaction shapes are not part
+// of the canonical asset catalog.
+import worldHotspots from '../assets/world-hotspots.svg?raw';
+import houseHotspots from '../assets/house-hotspots.svg?raw';
+import kitchenHotspots from '../assets/kitchen-hotspots.svg?raw';
 
 interface AreaSvgProps {
   area: AreaNode;
   onAreaClick: (areaId: string) => void;
 }
 
-// Asset imports for each area
-import worldIllustration from '../assets/world.svg?raw';
-import worldHotspots from '../assets/world-hotspots.svg?raw';
-import houseIllustration from '../assets/house.svg?raw';
-import houseHotspots from '../assets/house-hotspots.svg?raw';
-import kitchenIllustration from '../assets/kitchen.svg?raw';
-import kitchenHotspots from '../assets/kitchen-hotspots.svg?raw';
-
-// Asset mapping for each area
-const areaAssets: Record<string, { illustration: string; hotspots: string }> = {
-  world: {
-    illustration: worldIllustration,
-    hotspots: worldHotspots
-  },
-  house: {
-    illustration: houseIllustration,
-    hotspots: houseHotspots
-  },
-  kitchen: {
-    illustration: kitchenIllustration,
-    hotspots: kitchenHotspots
-  }
+const hotspotAssets: Record<string, string> = {
+  world: worldHotspots,
+  house: houseHotspots,
+  kitchen: kitchenHotspots
 };
 
 export function AreaSvg({ area, onAreaClick }: AreaSvgProps) {
-  const assets = areaAssets[area.id];
+  const [illustration, setIllustration] = useState<string>('');
 
-  // Handle hotspot clicks
+  useEffect(() => {
+    let cancelled = false;
+
+    fetch(get2dSvgPath(area.id))
+      .then((res) => {
+        if (!res.ok) throw new Error(`Failed to load ${area.id} SVG`);
+        return res.text();
+      })
+      .then((text) => {
+        if (!cancelled) setIllustration(text);
+      })
+      .catch(() => {
+        if (!cancelled) setIllustration('');
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [area.id]);
+
   const handleHotspotClick = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
     const hotspotGroup = target.closest('.hotspot');
@@ -44,15 +53,17 @@ export function AreaSvg({ area, onAreaClick }: AreaSvgProps) {
     }
   };
 
-  if (!assets) {
+  const hotspots = hotspotAssets[area.id];
+
+  if (!hotspots) {
     return (
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
-        width: '800px', 
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '800px',
         height: '600px',
-        backgroundColor: '#f0f0f0' 
+        backgroundColor: '#f0f0f0'
       }}>
         <span>Unknown area: {area.name}</span>
       </div>
@@ -61,20 +72,18 @@ export function AreaSvg({ area, onAreaClick }: AreaSvgProps) {
 
   return (
     <div style={{ position: 'relative', width: '800px', height: '600px' }}>
-      {/* Background illustration */}
-      <div 
-        dangerouslySetInnerHTML={{ __html: assets.illustration }}
+      <div
+        dangerouslySetInnerHTML={{ __html: illustration }}
         style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
       />
-      
-      {/* Hotspot overlay */}
-      <div 
-        dangerouslySetInnerHTML={{ __html: assets.hotspots }}
-        style={{ 
-          position: 'absolute', 
-          top: 0, 
-          left: 0, 
-          width: '100%', 
+
+      <div
+        dangerouslySetInnerHTML={{ __html: hotspots }}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
           height: '100%',
           pointerEvents: 'auto'
         }}

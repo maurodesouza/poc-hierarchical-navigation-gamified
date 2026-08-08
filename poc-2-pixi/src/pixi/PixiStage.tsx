@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Application } from 'pixi.js';
-import { clearTextureCache, getPaletteColor } from '../assets/textureGenerator';
+import { colors } from '@poc-hierarchical/core';
+import { clearTextureCache } from '../assets/assetLoader';
 
 interface PixiStageProps {
   children: (app: Application) => void;
@@ -19,13 +20,13 @@ export function PixiStage({ children }: PixiStageProps) {
 
     const initPixi = async () => {
       if (!canvasRef.current) return;
-      
+
       const app = new Application();
-      
+
       await app.init({
         canvas: canvasRef.current,
         resizeTo: window,
-        backgroundColor: getPaletteColor('cream'),
+        backgroundColor: Number.parseInt(colors.cream.slice(1), 16),
         antialias: true,
       });
 
@@ -38,7 +39,7 @@ export function PixiStage({ children }: PixiStageProps) {
     return () => {
       // Clear texture cache before destroying app
       clearTextureCache();
-      
+
       if (appRef.current) {
         appRef.current.destroy(true, true);
         appRef.current = null;

@@ -101,11 +101,11 @@ function scene(relativePath: string): () => string {
 }
 
 const renders: Record<string, () => string> = {
-  world: scene('../../../poc-1-svg/src/assets/world.svg'),
-  house: scene('../../../poc-1-svg/src/assets/house.svg'),
-  kitchen: scene('../../../poc-1-svg/src/assets/kitchen.svg'),
+  world: scene('../sources/2d/world.svg'),
+  house: scene('../sources/2d/house.svg'),
+  kitchen: scene('../sources/2d/kitchen.svg'),
   refrigerator: () =>
-    loadCanonicalSvg('../../../poc-3-phaser/src/assets/objects/refrigerator.svg') ||
+    loadCanonicalSvg('../sources/2d/refrigerator.svg') ||
     objectWrap(isoBox(128, 210, 90, 70, 130, color('mintAppliance'))),
 
   stove: () =>
