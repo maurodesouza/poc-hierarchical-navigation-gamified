@@ -37,7 +37,12 @@ const canonicalIds = new Set([
   'path',
   'wall',
   'window',
-  'ground'
+  'ground',
+  'ground_diamond',
+  'path_tile',
+  'bush',
+  'cloud',
+  'sky_backdrop'
 ]);
 
 const ids = new Set(catalog.assets.map((asset) => asset.id));
