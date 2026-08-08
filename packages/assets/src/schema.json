@@ -1,0 +1,192 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://poc-hierarchical.dev/schemas/asset-catalog.json",
+  "title": "Asset Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "assets"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Semantic version of the asset catalog."
+    },
+    "generatedAt": {
+      "type": "string",
+      "description": "ISO 8601 timestamp indicating when the manifest was generated."
+    },
+    "assets": {
+      "type": "array",
+      "description": "List of canonical assets available to every backend.",
+      "items": {
+        "$ref": "#/$defs/asset"
+      }
+    }
+  },
+  "$defs": {
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "tags",
+        "source",
+        "glb",
+        "svg",
+        "sprite",
+        "boundingBox",
+        "hotspots",
+        "materials",
+        "scale"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Machine-readable identifier for the asset."
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable name for the asset."
+        },
+        "tags": {
+          "type": "array",
+          "description": "Classification tags used for filtering and grouping.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source": {
+          "$ref": "#/$defs/assetSource"
+        },
+        "glb": {
+          "$ref": "#/$defs/assetBackendOutput",
+          "description": "3D backend output metadata."
+        },
+        "svg": {
+          "$ref": "#/$defs/assetBackendOutput",
+          "description": "SVG backend output metadata."
+        },
+        "sprite": {
+          "$ref": "#/$defs/assetBackendOutput",
+          "description": "2D sprite backend output metadata."
+        },
+        "boundingBox": {
+          "$ref": "#/$defs/boundingBox"
+        },
+        "hotspots": {
+          "type": "array",
+          "description": "Interactive hotspots associated with the asset.",
+          "items": {
+            "$ref": "#/$defs/hotspot"
+          }
+        },
+        "materials": {
+          "type": "array",
+          "description": "Materials referenced by the asset.",
+          "items": {
+            "$ref": "#/$defs/material"
+          }
+        },
+        "scale": {
+          "type": "number",
+          "description": "Base scale multiplier applied when rendering the asset."
+        }
+      }
+    },
+    "assetSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["canonical", "procedural", "external"],
+          "description": "Source type for the asset geometry or definition."
+        },
+        "path": {
+          "type": "string",
+          "description": "Path to the source asset file, if available."
+        },
+        "generator": {
+          "type": "string",
+          "description": "Name or path of the generator used to produce the asset."
+        }
+      }
+    },
+    "assetBackendOutput": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "Path to the generated backend-specific asset file."
+        },
+        "generated": {
+          "type": "boolean",
+          "description": "Whether the backend output has already been generated."
+        },
+        "generator": {
+          "type": "string",
+          "description": "Generator used to create the backend output."
+        }
+      }
+    },
+    "boundingBox": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height", "depth"],
+      "properties": {
+        "width": {
+          "type": "number"
+        },
+        "height": {
+          "type": "number"
+        },
+        "depth": {
+          "type": "number"
+        }
+      }
+    },
+    "hotspot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "x", "y"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "z": {
+          "type": "number"
+        },
+        "label": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      }
+    },
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
