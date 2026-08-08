@@ -1,6 +1,6 @@
 import { useFrame } from '@react-three/fiber';
 import { useInteractiveObject } from '../hooks/useInteractiveObject';
-import { GroundTile, House, PathTile, Tree } from './props';
+import { AssetRenderer } from './AssetRenderer';
 import { Lighting } from './Lighting';
 import { Background } from './Background';
 
@@ -9,7 +9,7 @@ interface WorldSceneProps {
 }
 
 export function WorldScene({ onEnterHouse }: WorldSceneProps) {
-  const { groupRef, hovered, bind } = useInteractiveObject({ onClick: onEnterHouse });
+  const { groupRef, bind } = useInteractiveObject({ onClick: onEnterHouse });
 
   useFrame((state) => {
     if (groupRef.current) {
@@ -22,19 +22,19 @@ export function WorldScene({ onEnterHouse }: WorldSceneProps) {
       <Background mood="world" />
       <Lighting mood="world" />
 
-      <GroundTile position={[0, -0.125, 0]} size={12} color="grassLight" />
+      <AssetRenderer assetId="ground" position={[0, -0.012, 0]} scale={0.024} />
 
-      <PathTile position={[0, 0.015, 2.2]} />
-      <PathTile position={[0.25, 0.015, 3]} />
-      <PathTile position={[-0.25, 0.015, 3.8]} />
-      <PathTile position={[0, 0.015, 4.6]} />
+      <AssetRenderer assetId="path_tile" position={[0, 0.04, 2.2]} />
+      <AssetRenderer assetId="path_tile" position={[0.25, 0.04, 3]} />
+      <AssetRenderer assetId="path_tile" position={[-0.25, 0.04, 3.8]} />
+      <AssetRenderer assetId="path_tile" position={[0, 0.04, 4.6]} />
 
       <group ref={groupRef} {...bind}>
-        <House hovered={hovered} />
+        <AssetRenderer assetId="house" />
       </group>
 
-      <Tree position={[-4, 0, -2]} />
-      <Tree position={[4, 0, -2]} scale={1.1} />
+      <AssetRenderer assetId="tree" position={[-4, 0, -2]} />
+      <AssetRenderer assetId="tree" position={[4, 0, -2]} scale={1.1} />
     </>
   );
 }
