@@ -16,6 +16,7 @@
   ],
   "scripts": {
     "build": "tsc -b",
+    "build:assets": "tsc -b && node dist/build.js",
     "lint": "tsc -b",
     "clean": "rm -rf dist",
     "validate": "tsc -b && node dist/validate.js"

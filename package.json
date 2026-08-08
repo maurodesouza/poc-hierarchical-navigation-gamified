@@ -9,6 +9,8 @@
   ],
   "scripts": {
     "build": "npm run build -w @poc-hierarchical/core && npm run build -w poc-1-svg -w poc-2-pixi -w poc-3-phaser -w poc-4-tree -w poc-5-3d",
+    "assets:build": "npm run build:assets -w @poc-hierarchical/assets",
+    "assets:clean": "npm run clean -w @poc-hierarchical/assets",
     "lint": "npm run lint --workspaces"
   }
 }
