@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { get2dSvgPath } from '@poc-hierarchical/assets';
 import { eventBus } from '../eventBus';
 import { world } from '@poc-hierarchical/core';
 
@@ -10,8 +11,8 @@ export class KitchenScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.svg('kitchen-bg', 'src/assets/scenes/kitchen.svg');
-    this.load.svg('refrigerator', 'src/assets/objects/refrigerator.svg');
+    this.load.svg('kitchen-bg', get2dSvgPath('kitchen'));
+    this.load.svg('refrigerator', get2dSvgPath('refrigerator'));
   }
 
   create() {
@@ -22,7 +23,7 @@ export class KitchenScene extends Phaser.Scene {
     // Add refrigerator as interactive object
     this.refrigeratorSprite = this.add.image(535, 338, 'refrigerator');
     this.refrigeratorSprite.setInteractive({ useHandCursor: true });
-    
+
     // Add hover effect for refrigerator
     this.refrigeratorSprite.on('pointerover', () => {
       this.refrigeratorSprite.setTint(0xffc24d);
@@ -30,7 +31,7 @@ export class KitchenScene extends Phaser.Scene {
     this.refrigeratorSprite.on('pointerout', () => {
       this.refrigeratorSprite.clearTint();
     });
-    
+
     // Add click handler for refrigerator
     this.refrigeratorSprite.on('pointerdown', () => {
       this.selectRefrigerator();
@@ -49,7 +50,7 @@ export class KitchenScene extends Phaser.Scene {
     // Add back button
     const backButton = this.add.rectangle(100, 550, 120, 40, 0xe74c3c);
     backButton.setInteractive({ useHandCursor: true });
-    
+
     const backText = this.add.text(100, 550, 'Back', {
       fontSize: '16px',
       color: '#ffffff'

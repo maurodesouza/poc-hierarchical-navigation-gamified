@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { get2dSvgPath } from '@poc-hierarchical/assets';
 
 export class HouseScene extends Phaser.Scene {
   private hoverIndicator!: Phaser.GameObjects.Rectangle;
@@ -8,7 +9,7 @@ export class HouseScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.svg('house-bg', 'src/assets/scenes/house.svg');
+    this.load.svg('house-bg', get2dSvgPath('house'));
   }
 
   create() {
@@ -48,7 +49,7 @@ export class HouseScene extends Phaser.Scene {
     // Add back button
     const backButton = this.add.rectangle(100, 550, 120, 40, 0xe74c3c);
     backButton.setInteractive({ useHandCursor: true });
-    
+
     const backText = this.add.text(100, 550, 'Back', {
       fontSize: '16px',
       color: '#ffffff'
