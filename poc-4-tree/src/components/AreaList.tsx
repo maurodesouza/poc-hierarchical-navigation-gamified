@@ -1,4 +1,4 @@
-import type { AreaNode } from '../data/world';
+import type { AreaNode } from '@poc-hierarchical/core';
 
 interface AreaListProps {
   areas: AreaNode[];

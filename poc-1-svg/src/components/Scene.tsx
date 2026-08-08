@@ -1,4 +1,4 @@
-import type { AreaNode, ObjectInfo } from '../data/world';
+import type { AreaNode, ObjectInfo } from '@poc-hierarchical/core';
 import { AreaSvg } from './AreaSvg';
 
 // Asset imports for hotspots

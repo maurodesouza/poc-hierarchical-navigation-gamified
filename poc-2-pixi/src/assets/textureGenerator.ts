@@ -1,5 +1,5 @@
 import { Graphics } from 'pixi.js';
-import palette from '../../../docs/palette.json';
+import { palette } from '@poc-hierarchical/core';
 
 /**
  * Generates isometric sprite graphics programmatically.

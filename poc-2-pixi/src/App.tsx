@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigation } from './hooks/useNavigation';
-import type { ObjectInfo } from './data/world';
+import type { ObjectInfo } from '@poc-hierarchical/core';
 import { PixiStage } from './pixi/PixiStage';
 import { renderScene, animateSceneExit } from './pixi/sceneRenderer';
 import { BackButton } from './components/BackButton';

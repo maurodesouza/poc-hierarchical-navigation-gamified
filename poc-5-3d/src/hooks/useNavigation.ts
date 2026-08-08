@@ -1,6 +1,5 @@
 import { useState, useCallback } from 'react';
-import type { AreaNode } from '../data/world';
-import { world } from '../data/world';
+import { world, type AreaNode } from '@poc-hierarchical/core';
 
 /**
  * Navigation hook for hierarchical area exploration

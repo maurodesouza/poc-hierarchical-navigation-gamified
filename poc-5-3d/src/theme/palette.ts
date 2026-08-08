@@ -1,4 +1,4 @@
-import rawPalette from '../../../docs/palette.json';
+import { palette as rawPalette } from '@poc-hierarchical/core';
 
 export type PaletteColor = keyof typeof rawPalette.colors;
 
