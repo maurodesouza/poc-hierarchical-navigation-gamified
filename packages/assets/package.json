@@ -24,6 +24,7 @@
   "devDependencies": {
     "@types/node": "^22.0.0",
     "ajv": "^8.17.1",
+    "sharp": "^0.34.5",
     "typescript": "~6.0.2"
   }
 }
